@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-dumbbell"></i> Workout Tracker</h1>
+        </header>
+
+        <main class="main-content">
+            <!-- File Upload Section -->
+            <section id="upload-section" class="card">
+                <h2><i class="fas fa-upload"></i> Upload Your Workout Plan</h2>
+                <p>Upload a CSV or Excel file containing your workout plan</p>
+                <div class="upload-area" id="upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your file here or click to browse</p>
+                    <input type="file" id="file-input" accept=".csv,.xlsx,.xls" hidden>
+                </div>
+                <div class="file-info" id="file-info" style="display: none;">
+                    <i class="fas fa-file-check"></i>
+                    <span id="file-name"></span>
+                    <button id="clear-file" class="btn-secondary">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Workout Selection Section -->
+            <section id="workout-section" class="card" style="display: none;">
+                <h2><i class="fas fa-list"></i> Select Today's Workout</h2>
+                <div class="workout-selector">
+                    <select id="workout-select" class="workout-dropdown">
+                        <option value="">Choose a workout...</option>
+                    </select>
+                    <button id="start-workout" class="btn-primary" disabled>
+                        <i class="fas fa-play"></i> Start Workout
+                    </button>
+                </div>
+            </section>
+
+            <!-- Current Workout Section -->
+            <section id="current-workout" class="card" style="display: none;">
+                <div class="workout-header">
+                    <h2 id="current-workout-name">Current Workout</h2>
+                    <div class="workout-controls">
+                        <button id="save-workout" class="btn-success">
+                            <i class="fas fa-save"></i> Save
+                        </button>
+                        <button id="finish-workout" class="btn-primary">
+                            <i class="fas fa-check"></i> Finish
+                        </button>
+                    </div>
+                </div>
+                <div id="exercise-list" class="exercise-list">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Workout History Section -->
+            <section id="history-section" class="card">
+                <h2><i class="fas fa-history"></i> Workout History</h2>
+                <div class="history-controls">
+                    <button id="export-data" class="btn-secondary">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button id="clear-history" class="btn-danger">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+                <div id="history-list" class="history-list">
+                    <p class="empty-state">No workouts completed yet</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
